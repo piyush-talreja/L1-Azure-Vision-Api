@@ -1,12 +1,20 @@
-import os
-
+import configparser
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
 from msrest.authentication import CognitiveServicesCredentials
 from azure.cognitiveservices.vision.computervision.models import OperationStatusCodes
 import time
 
-key = os.environ.get("VISION_API_KEY")
-endpoint = os.environ.get("VISION_ENDPOINT")
+config = configparser.ConfigParser()
+config.read('config.ini')
+
+key = config.get('Credentials', 'VISION_API_KEY')
+endpoint = config.get('Credentials', 'VISION_ENDPOINT')
+
+print(key)
+print(endpoint)
+
+# key = os.environ.get("VISION_API_KEY")
+# endpoint = os.environ.get("VISION_ENDPOINT")
 
 credentials = CognitiveServicesCredentials(key)
 

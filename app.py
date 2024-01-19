@@ -22,7 +22,7 @@ def analysis():
     # Try to get the text from the image
     try:
         res = read_image(image_uri)
-        
+        print(res)
         response_data = {
             "text": res
         }
